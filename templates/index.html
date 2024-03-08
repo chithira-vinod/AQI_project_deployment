@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air Quality Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: inline-block;
+            width: 100px;
+        }
+        .input-group input {
+            width: 200px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Air Quality Prediction</h1>
+    <form method="post">
+        <div class="input-group">
+            <label for="T">Temperature (T):</label>
+            <input type="text" id="T" name="T" required>
+        </div>
+        <div class="input-group">
+            <label for="TM">Maximum Temperature (TM):</label>
+            <input type="text" id="TM" name="TM" required>
+        </div>
+        <div class="input-group">
+            <label for="Tm">Minimum Temperature (Tm):</label>
+            <input type="text" id="Tm" name="Tm" required>
+        </div>
+        <div class="input-group">
+            <label for="SLP">Atmospheric Pressure (SLP):</label>
+            <input type="text" id="SLP" name="SLP" required>
+        </div>
+        <div class="input-group">
+            <label for="H">Relative Humidity (H):</label>
+            <input type="text" id="H" name="H" required>
+        </div>
+        <div class="input-group">
+            <label for="VV">Visibility (VV):</label>
+            <input type="text" id="VV" name="VV" required>
+        </div>
+        <div class="input-group">
+            <label for="V">Wind Speed (V):</label>
+            <input type="text" id="V" name="V" required>
+        </div>
+        <div class="input-group">
+            <label for="VM">Maximum Wind Speed (VM):</label>
+            <input type="text" id="VM" name="VM" required>
+        </div>
+        <div class="input-group">
+            <input type="submit" value="Predict">
+            <input type="button" onclick="resetForm()" value="Reset">
+        </div>
+    </form>
+    {% if prediction %}
+        <div class="result">
+            <h2>Predicted AQI: {{ prediction }}</h2>
+            <p>Inputs: T={{ T }}, TM={{ TM }}, Tm={{ Tm }}, SLP={{ SLP }}, H={{ H }}, VV={{ VV }}, V={{ V }}, VM={{ VM }}</p>
+        </div>
+    {% endif %}
+
+    <script>
+        function resetForm() {
+            document.getElementById("T").value = "";
+            document.getElementById("TM").value = "";
+            document.getElementById("Tm").value = "";
+            document.getElementById("SLP").value = "";
+            document.getElementById("H").value = "";
+            document.getElementById("VV").value = "";
+            document.getElementById("V").value = "";
+            document.getElementById("VM").value = "";
+        }
+    </script>
+</body>
+</html>
